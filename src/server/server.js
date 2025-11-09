@@ -85,7 +85,7 @@ let siguienteId = obtenerSiguienteId();
             dateTime
         };
 
-        // Guardar cambios en cards.json
+        // Reflejar cambios en cards.json
         fs.readFile(cardsPath, "utf8", (err, data) => {
             if (err) {
                 return res.status(500).json({ error: "Error al leer el archivo JSON" });
@@ -99,8 +99,8 @@ let siguienteId = obtenerSiguienteId();
             }
 
             if (!json.cards) json.cards = [];
-            json.cards.push(nuevoEvento);  // Cambios reflejados en el JSON
-            eventos.push(nuevoEvento);  // Cambios reflejados en el HTML
+            json.cards.push(nuevoEvento);  // Cambios en JSON
+            eventos.push(nuevoEvento);  // Cambios en HTML
 
             fs.writeFile(cardsPath, JSON.stringify(json, null, 2), (writeErr) => {
                 if (writeErr) {
@@ -116,39 +116,54 @@ let siguienteId = obtenerSiguienteId();
         const id = parseInt(req.params.id);
         const { title, category, description, imgURL, dateTime } = req.body;
 
-        const indice = eventos.findIndex((e) => e.id === id);
+        const i = eventos.findIndex((e) => e.id === id);
 
-        if (indice === -1) {
+        if (i === -1) {
             return res.status(404).json({ error: "Evento no encontrado" });
         }
 
         if (dateTime !== undefined && !validarFechaISO(dateTime)) {
             return res.status(400).json({
-                error: "Formato de fecha inválido. El formato requerido es ISO 8601: YYYY-MM-DDTHH:mm:ssZ (ejemplo: 2025-10-16T10:00:00Z)",
+                error: "Formato de fecha inválido. El formato requerido es ISO 8601: YYYY-MM-DDTHH:mm:ssZ",
             });
         }
 
-        // Actualizar solo los campos proporcionados
-        if (title !== undefined) eventos[indice].title = title;
-        if (category !== undefined) eventos[indice].category = category;
-        if (description !== undefined) eventos[indice].description = description;
-        if (imgURL !== undefined) eventos[indice].imgURL = imgURL;
-        if (dateTime !== undefined) eventos[indice].dateTime = dateTime;
+        // Actualizar campos
+        if (title !== undefined) eventos[i].title = title;
+        if (category !== undefined) eventos[i].category = category;
+        if (description !== undefined) eventos[i].description = description;
+        if (imgURL !== undefined) eventos[i].imgURL = imgURL;
+        if (dateTime !== undefined) eventos[i].dateTime = dateTime;
 
-        res.json(eventos[indice]);
+        // Reflejar cambios en cards.json
+        const jsonActualizado = { cards: eventos };
+        fs.writeFile(cardsPath, JSON.stringify(jsonActualizado, null, 2), (err) => {
+            if (err) {
+                return res.status(500).json({ error: "Error al guardar los cambios en el archivo JSON" });
+            }
+            res.json(eventos[i]);  // Cambios en HTML
+        });
     });
 
     // DELETE - Eliminar un evento
     app.delete("/api/eventos/:id", (req, res) => {
         const id = parseInt(req.params.id);
-        const indice = eventos.findIndex((e) => e.id === id);
+        const i = eventos.findIndex((e) => e.id === id);
 
-        if (indice === -1) {
+        if (i === -1) {
             return res.status(404).json({ error: "Evento no encontrado" });
         }
 
-        const eventoEliminado = eventos.splice(indice, 1)[0];
-        res.json({ mensaje: "Evento eliminado", evento: eventoEliminado });
+        const eventoEliminado = eventos.splice(i, 1)[0];
+
+        // Reflejar cambios en cards.json
+        const jsonActualizado = { cards: eventos };
+        fs.writeFile(cardsPath, JSON.stringify(jsonActualizado, null, 2), (err) => {
+            if (err) {
+                return res.status(500).json({ error: "Error al guardar los cambios en el archivo JSON" });
+            }
+            res.json({ mensaje: "Evento eliminado", evento: eventoEliminado });
+        });
     });
 
 // ============= INICIAR SERVIDOR =============
