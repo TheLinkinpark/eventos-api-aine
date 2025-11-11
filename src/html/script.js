@@ -25,28 +25,28 @@ function cargarCard(cardData) {
   div.classList.add("card");
   div.innerHTML = `<img id="card-img" class="card-img" src="${cardData.imgURL}" alt="gr" />
                   <div class="card-content">
-                    <span class="category nature">${cardData.category}</span>
+                    <span class="category" category="${minimizar(cardData.category)}">${cardData.category}</span>
                     <h2 class="card-title">${cardData.title}</h2>
                     <p class="card-description">${cardData.description}</p>
-                    <div class="event-date">
+                    <div class="event-date" category="${minimizar(cardData.category)}">
                       <img src="../assets/calendar-icon.svg" />
                       <span>${formatearFecha(cardData.dateTime)}</span>
                     </div>
                     <div class="countdown-area" data-datetime="${cardData.dateTime}">
                       <div class="countdown-item">
-                        <span class="countdown-num" data-unit="days">--</span>
+                        <span class="countdown-num" category="${minimizar(cardData.category)}" data-unit="days">--</span>
                         <span class="countdown-txt"> Días </span>
                       </div>
                       <div class="countdown-item">
-                        <span class="countdown-num" data-unit="hours">--</span>
+                        <span class="countdown-num" category="${minimizar(cardData.category)}" data-unit="hours">--</span>
                         <span class="countdown-txt"> Horas </span>
                       </div>
                       <div class="countdown-item">
-                        <span class="countdown-num" data-unit="minutes">--</span>
+                        <span class="countdown-num" category="${minimizar(cardData.category)}" data-unit="minutes">--</span>
                         <span class="countdown-txt"> Minutos </span>
                       </div>
                       <div class="countdown-item">
-                        <span class="countdown-num" data-unit="seconds">--</span>
+                        <span class="countdown-num" category="${minimizar(cardData.category)}" data-unit="seconds">--</span>
                         <span class="countdown-txt"> Segundos </span>
                       </div>
                     </div>
@@ -187,6 +187,12 @@ function cargarCard(cardData) {
     res = res.charAt(0).toUpperCase() + res.slice(1)
 
     return res;
+  }
+
+  function minimizar(texto) {
+    const tildes = { 'á':'a', 'é':'e', 'í':'i', 'ó':'o', 'ú':'u', 'Á':'A', 'É':'E', 'Í':'I', 'Ó':'O', 'Ú':'U' };
+    texto = texto.replace(/[áéíóúÁÉÍÓÚ]/g, letra => tildes[letra] || letra);
+    return texto.toLowerCase();
   }
 
   function validarFechaISO(dateTime) {
