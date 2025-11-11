@@ -3,12 +3,46 @@
   padding: 0;
   box-sizing: border-box;
 }
+/* Variables personalizadas */
+  :root {
+    --small-margin: 0.5rem;
+  }
 
-:root {
-  /* --primary-color: #8fae68;
-  --secondary-color: #768465; */
-  --small-margin: 0.5rem;
-}
+  [category="historia"] {
+    --bg-color: linear-gradient(135deg, #ff7e5f 0%, #feb47b 100%);
+    --left-border-color: 3px solid #ff7e5f;
+    --ctdwn-color: #ff7e5f;
+  }
+
+  [category="naturaleza"] {
+    --bg-color: linear-gradient(135deg, #2b8a3e 0%, #7bc47f 100%);
+    --left-border-color: 3px solid #2b8a3e;
+    --ctdwn-color: #2b8a3e;
+  }
+
+  [category="animales"] {
+    --bg-color: linear-gradient(135deg, #7b2ff7 0%, #ff6fd8 100%);
+    --left-border-color: 3px solid #7b2ff7;
+    --ctdwn-color: #7b2ff7;
+  }
+
+  [category="teconologia"] {
+    --bg-color: linear-gradient(135deg, #0ea5e9 0%, #0369a1 100%);
+    --left-border-color: 3px solid #0ea5e9;
+    --ctdwn-color: #0ea5e9;
+  }
+
+  [category="ciencia"] {
+    --bg-color: linear-gradient(135deg, #8e2de2 0%, #4a00e0 100%);
+    --left-border-color: 3px solid #8e2de2;
+    --ctdwn-color: #8e2de2;
+  }
+
+  [category="astronomia"] {
+    --bg-color: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+    --left-border-color: 3px solid #0f2027;
+    --ctdwn-color: #0f2027;
+  }
 
 .sm-margin-bottom {
   margin-bottom: var(--small-margin);
@@ -54,6 +88,7 @@ body {
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 2px;
+    background: var(--bg-color);
   }
 
   .terminado {
@@ -62,36 +97,32 @@ body {
   }
 
   /* Categorías específicas */
-    .nature {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    .card-title {
+      font-size: 1.5em;
+      font-weight: 700;
+      margin-bottom: var(--small-margin);
     }
 
-  .card-title {
-    font-size: 1.5em;
-    font-weight: 700;
-    margin-bottom: var(--small-margin);
-  }
+    .card-description {
+      font-size: 0.9rem;
+      color: #555;
+      margin-bottom: var(--small-margin);
+    }
 
-  .card-description {
-    font-size: 0.9rem;
-    color: #555;
-    margin-bottom: var(--small-margin);
-  }
-
-  .event-date {
-    display: flex;
-    align-items: center;
-    justify-content: start;
-    gap: 0.5rem;
-    font-size: 0.9rem;
-    font-weight: 500;
-    background-color: #e9e9e9;
-    color: #555;
-    padding: 0.5rem 0.8rem;
-    margin-bottom: 1rem;
-    border-radius: 6px;
-    border-left: 3px solid #667eea;
-  }
+    .event-date {
+      display: flex;
+      align-items: center;
+      justify-content: start;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      background-color: #e9e9e9;
+      color: #555;
+      padding: 0.5rem 0.8rem;
+      margin-bottom: 1rem;
+      border-radius: 6px;
+      border-left: var(--left-border-color);
+    }
 
   /* Contador */
     .countdown-area {
@@ -117,7 +148,7 @@ body {
       font-size: 1.8rem;
       font-weight: 700;
       margin-bottom: 0.3rem;
-      color: #667eea;
+      color: var(--ctdwn-color);
     }
     .countdown-txt {
       font-size: 0.75rem;
