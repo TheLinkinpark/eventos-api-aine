@@ -1,26 +1,52 @@
 {
-    "cards":[
-        {
-            "id": 1,
-            "title": "Explora la historia antigua",
-            "category": "Historia",
-            "description": "Viaja en el tiempo y descubre civilizaciones pasadas",
-            "imgURL": "../assets/historia.jpg",
-            "dateTime": "2025-04-21T12:15:00Z"
-        }, {
-            "id": 2,
-            "title": "Visita nuevos paisajes",
-            "category": "Naturaleza",
-            "description": "Sumérgete en la hermosa naturaleza",
-            "imgURL": "../assets/naturaleza.jpg",
-            "dateTime": "2025-11-29T08:45:00Z"
-        }, {
-            "id": 3,
-            "title": "Conoce nuevos animales",
-            "category": "Animales",
-            "description": "Explora el apasionante reino animal",
-            "imgURL": "../assets/animales.jpg",
-            "dateTime": "2025-12-16T16:30:00Z"
-        }
-    ]
+  "cards": [
+    {
+      "id": 1,
+      "title": "Explora la historia antigua",
+      "category": "Historia",
+      "description": "Viaja en el tiempo y descubre civilizaciones pasadas",
+      "imgURL": "../assets/historia.jpg",
+      "dateTime": "2025-03-21T12:15:00Z"
+    },
+    {
+      "id": 2,
+      "title": "Jornadas de ciencia",
+      "category": "Ciencia",
+      "description": "Charlas y talleres sobre avances científicos actuales",
+      "imgURL": "../assets/ciencia.jpg",
+      "dateTime": "2025-06-02T20:30:00Z"
+    },
+    {
+      "id": 3,
+      "title": "Noche de astronomía",
+      "category": "Astronomía",
+      "description": "Observación del cielo y conferencias sobre el universo",
+      "imgURL": "../assets/astronomia.jpg",
+      "dateTime": "2025-11-29T20:30:00Z"
+    },
+    {
+      "id": 4,
+      "title": "Visita nuevos paisajes",
+      "category": "Naturaleza",
+      "description": "Sumérgete en la hermosa naturaleza",
+      "imgURL": "../assets/naturaleza.jpg",
+      "dateTime": "2025-12-04T06:50:00Z"
+    },
+    {
+      "id": 5,
+      "title": "Conoce nuevos animales",
+      "category": "Animales",
+      "description": "Explora el apasionante reino animal",
+      "imgURL": "../assets/animales.jpg",
+      "dateTime": "2025-12-16T16:30:00Z"
+    },
+    {
+      "id": 6,
+      "title": "Feria de teconología",
+      "category": "Teconología",
+      "description": "Descubre las últimas innovaciones y proyectos tecnológicos",
+      "imgURL": "../assets/tecnologia.jpg",
+      "dateTime": "2026-01-10T10:00:00Z"
+    }
+  ]
 }
