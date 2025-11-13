@@ -165,7 +165,7 @@ function cargarCard(cardData) {
         const hora = String(temporalFecha.hour).padStart(2, '0');
         const minuto = String(temporalFecha.minute).padStart(2, '0');
 
-        return `${nombreDia}, ${dia}/${mes}/${año}, - ${hora}:${minuto}`;
+        return `${nombreDia}, ${dia}/${mes}/${año} - ${hora}:${minuto}`;
       } catch (e) {
         console.warn("Error usando Temporal:", e);
       }
@@ -184,7 +184,7 @@ function cargarCard(cardData) {
     };
 
     let res = fecha.toLocaleString('es-ES', opciones).replace(',', ', -');
-    res = res.charAt(0).toUpperCase() + res.slice(1)
+    res = res.charAt(0).toUpperCase() + res.slice(1);
 
     return res;
   }
